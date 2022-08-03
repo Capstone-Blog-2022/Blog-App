@@ -10,7 +10,9 @@ const pool = new Pool({
         pool: {
             max: 5, 
             min: 0, 
+            // will wait 30 seconds to connect to the PG pool before throwing an error
             acquire: 30000,
+            // will go idle for 15 seconds before it times out
             idle: 15000
         }
     
