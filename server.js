@@ -4,6 +4,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
+const db = require('./app/models')
+const Role = db.role;
+
 
 let corsOptions = {
     origin: 'http://localhost:3030'
@@ -27,3 +30,16 @@ const PORT = 3030;
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`)
 })
+
+//this function will help us set up the 3 rows in the database, and we will use true 
+// const initial = () => {
+//     Role.create({
+//         id: 1,
+//         name: "user"
+//     })
+// }
+
+db.sequelize.sync(/*{force:true}).then(() => {
+    console.log("Dropping and resyncing Database")
+    initial()
+}*/)
