@@ -4,11 +4,11 @@
  */
 exports.up = function(knex) {
     return knex.schema.createTable('posts', table => {
-        table.increments('id', {primaryKey: true});
-        table.string('username')
-        table.string('title')
-        table.string('description')
-        table.string('body')
+        table.increments('id').primary();
+        table.integer('user_id').references('id').inTable('users');
+        table.string('title').notNullable()
+        table.string('description').notNullable()
+        table.string('body').notNullable()
         table.boolean('isDraft')
     })
 };

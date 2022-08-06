@@ -1,39 +1,43 @@
 const pool = require('../configuration/dbConfig')
 const User = require('../models/userModel')
 
- const displayInfo = async (req, res) => {
-    const id = req.params.id;
+const getSingleUserInfo = async (req, res) => {
+    const user_id = req.params.id;
 
-    try{
-    
-    
+    try {
+        const userData = await User.getSingleUserInfoFromDB(user_id)
+        return res.status(200).send({ userData })
+
         //make an edge case for those who aren't in the system
-        if(id === 0){
-            res.status(500).send("non-existent user")
-        }
-    }   catch{
-        
+
+    } catch (err) {
+        return res.status(200).json({
+            message: err.message
+        })
     }
 
 }
 
-const update = async (req, res) =>{
+const update = async (req, res) => {
     const id = req.params.id
-    try{
+    try {
 
-        
-    }catch{
+
+    } catch {
 
     }
 
 }
 
-const createUserInfo = async(req, res) => {
-    const id = req.params.id
-    try{
-        
-    }catch{
+const createUser = async (req, res) => {
+    const { username, password, email, about, first_name, last_name } = req.body
+    const userInfo = { username, password, email, about, first_name, last_name }
+    try {
+        const newUserInfo = await User.createUserInDB(userInfo)
+        return res.status(200).send({ newUserInfo })
 
+    } catch (err) {
+        return res.status(400).send(err.message)
     }
 }
 
@@ -44,27 +48,29 @@ const getAllUsers = async (req, res) => {
             users
         })
     } catch (err) {
-        return res.status(200).json({
+        return res.status(400).json({
             message: err.message
         })
     }
 }
 
-const deleteUser = (req, res) => {
-    const id = req.params.id
-  
-    pool.query('DELETE FROM users WHERE id = $1', [id], (err, results) => {
-        //if there is an error, throw an error
-      if (err) {
-        throw err
-      }
-      response.status(200).send(`User deleted with ID: ${id}`)
-    })
-  }
+const deleteUser = async (req, res) => {
+    const user_id = req.params.id
+
+    try {
+        const user = await User.deleteUserInfoFromDB(user_id)
+        return res.status(200).send({ user })
+    } catch (err) {
+        return res.status(400).json({
+            message: err.message
+        })
+    }
+}
 
 module.exports = {
     getAllUsers,
-    // displayInfo,
-     update, 
+    getSingleUserInfo,
+    createUser,
+    update,
     deleteUser
 }

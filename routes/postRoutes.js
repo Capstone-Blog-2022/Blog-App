@@ -1,4 +1,4 @@
-const { ge,deleteBlog } = require('../controllers/blogController')
+const { getAllBlogs, getSpecificBlog, createBlog, updateBlog, deleteBlog } = require('../controllers/blogController')
 
 const postRouter = require('express').Router()
 
