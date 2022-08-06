@@ -1,22 +1,41 @@
 const pool = require('../configuration/dbConfig')
 const User = require('../models/userModel')
 
-// await const displayInfo = (req, res) => {
-//     const id = req.params.id;
+ const displayInfo = async (req, res) => {
+    const id = req.params.id;
 
-//     try{
-//     //make an edge case for those who aren't in the system
-
-//     }   catch{
+    try{
+    
+    
+        //make an edge case for those who aren't in the system
+        if(id === 0){
+            res.status(500).send("non-existent user")
+        }
+    }   catch{
         
-//     }
+    }
 
-// }
+}
 
-// async const update = (req, res) =>{
-//     const id = req.params.id
+const update = async (req, res) =>{
+    const id = req.params.id
+    try{
 
-// }
+        
+    }catch{
+
+    }
+
+}
+
+const createUserInfo = async(req, res) => {
+    const id = req.params.id
+    try{
+        
+    }catch{
+
+    }
+}
 
 const getAllUsers = async (req, res) => {
     try {
@@ -31,20 +50,21 @@ const getAllUsers = async (req, res) => {
     }
 }
 
-// const deleteUser = (req, res) => {
-//     const id = parseInt(req.params.id)
+const deleteUser = (req, res) => {
+    const id = req.params.id
   
-//     pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
-//       if (error) {
-//         throw error
-//       }
-//       response.status(200).send(`User deleted with ID: ${id}`)
-//     })
-//   }
+    pool.query('DELETE FROM users WHERE id = $1', [id], (err, results) => {
+        //if there is an error, throw an error
+      if (err) {
+        throw err
+      }
+      response.status(200).send(`User deleted with ID: ${id}`)
+    })
+  }
 
 module.exports = {
     getAllUsers,
     // displayInfo,
-    // update, 
-    // deleteUser
+     update, 
+    deleteUser
 }
