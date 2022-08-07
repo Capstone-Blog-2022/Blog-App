@@ -3,10 +3,10 @@ const { getAllBlogs, getSpecificBlog, createBlog, updateBlog, deleteBlog } = req
 const postRouter = require('express').Router()
 
 
-postRouter.get('/allBlogs', getAllBlogs)
+postRouter.get('/blogs', getAllBlogs)
 postRouter.get('/blogs/:id', getSpecificBlog)
-postRouter.post('/blog/:id', createBlog)
-postRouter.put('/blog/:id', updateBlog)
-postRouter.delete('/blog/:id', deleteBlog)
+postRouter.post('/blogs/:id', createBlog)
+postRouter.put('/blogs/:id', updateBlog)
+postRouter.delete('/blogs/:id', deleteBlog)
 
 module.exports = postRouter;
