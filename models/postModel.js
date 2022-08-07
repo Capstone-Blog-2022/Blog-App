@@ -8,17 +8,22 @@ class Posts{
     }
 
     static async displayPostFromDB(){
-        const sequelizePost = `SELECT * FROM posts WHERE id = ($1)`
-        const db = await pool.query(sequelizePost, [id])
-        return db.rows
+        const sqlPost = `SELECT * FROM posts WHERE id = ($1)`
+        const db = await pool.query(sqlPost, [id])
+        return db.rows[0]
+    }
+
+    static async createPostInDB({}){
+        const sql =``
+        const db = await pool.query()
     }
 
     static async updatePostInDB(){
         const sequelizing = `UPDATE posts SET `
     }
 
-    static async deletePostFromDB(){
-
+    static async deletePostFromDB(post_id){
+        const sql = `DELETE FROM posts WHERE id = $1 RETURNING *`
     }
 
 }
