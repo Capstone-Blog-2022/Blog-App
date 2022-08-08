@@ -10,6 +10,8 @@ exports.up = function (knex) {
         table.string('description').notNullable()
         table.string('body').notNullable()
         table.string('comments')
+        table.string('category')
+        table.timestamp('created_at').defaultTo(knex.fn.now());
         table.boolean('isDraft')
     })
 };
