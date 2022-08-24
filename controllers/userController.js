@@ -2,13 +2,14 @@ const pool = require('../configuration/dbConfig')
 const User = require('../models/userModel')
 
 const getSingleUserInfo = async (req, res) => {
-    const user_id = req.params.id;
+    console.log(req.body)
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log(email, password)
 
     try {
-        const userData = await User.getSingleUserInfoFromDB(user_id)
+        const userData = await User.getSingleUserInfoFromDB(email, password)
         return res.status(200).send({ userData })
-
-        //make an edge case for those who aren't in the system
 
     } catch (err) {
         return res.status(200).json({

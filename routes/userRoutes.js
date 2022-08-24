@@ -5,11 +5,11 @@ const { getAllUsers, deleteUser, createUser, update, getSingleUserInfo } = requi
 
 userRouter.get('/users', getAllUsers)
 
-userRouter.get('/users/:id', getSingleUserInfo)
+userRouter.get('/login', getSingleUserInfo)
 
-userRouter.post('/users', createUser)
+userRouter.post('/register', createUser)
 
-userRouter.put('/user/:id', update)
+userRouter.put('/users/:id', update)
 
 userRouter.delete('/users/:id', deleteUser)
 

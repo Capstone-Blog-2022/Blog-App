@@ -10,9 +10,9 @@ class User {
     }
 
     //will display all the user info
-    static async getSingleUserInfoFromDB(user_id) {
-        const sql = `SELECT * FROM users WHERE id = ($1)`
-        const dbResult = await pool.query(sql, [user_id])
+    static async getSingleUserInfoFromDB(email, password) {
+        const sql = `SELECT * FROM users WHERE email = ($1) AND password = ($2) `
+        const dbResult = await pool.query(sql, [email, password])
         return dbResult.rows
     }
 
