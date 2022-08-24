@@ -21,7 +21,7 @@ const getSingleUserInfo = async (req, res) => {
 const update = async (req, res) => {
     const id = req.params.id
     try {
-
+        
 
     } catch {
 

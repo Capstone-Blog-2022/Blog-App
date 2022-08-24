@@ -18,7 +18,7 @@ class Comments {
     }
 
     //create a comment
-    static async createCommentOnPostDB(){
+    static async createCommentOnPostDB({post_id, comments_id}){
 
     }
 

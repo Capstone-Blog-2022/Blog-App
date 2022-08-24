@@ -42,11 +42,16 @@ const retrieveBlog = async (req, res) => {
 
 
 const updateBlog = async (req, res) => {
-
+    const id = req.params.id 
+    const body = req.body
     try {
+        const postData = await Posts.displayPostFromDB(id, body)
+        
 
     } catch (error) {
-
+        return res.status(400).json({
+            message: error.message
+        })
     }
 
 }

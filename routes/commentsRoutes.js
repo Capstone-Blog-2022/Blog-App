@@ -7,7 +7,7 @@ commentsRouter.get('/blogs/:id/comments', )
 //create a comment
 commentsRouter.post('/blogs/:id/comments', )
 //update a comment
-commentsRouter.patch('/blogs/:id/comments', )
+commentsRouter.put('/blogs/:id/comments', )
 //delete a comment
 commentsRouter.delete('blogs/:id/comments', )
 

@@ -4,10 +4,12 @@
  */
 exports.up = function (knex) {
     return knex.schema.createTable('comments', table => {
-        table.integer('user_id').references('id').inTable('users');
-        table.integer('post_id').references('id').inTable('posts');
-        table.increments('id').primary();
-        table.string('description').notNullable();
+        table.increments('id', {primaryKey: true});
+        table.integer('user_id').notNullable();
+        table.foreign('user_id').references('users.id');
+        table.integer('post_id').notNullable();
+        table.foreign('post_id').references('posts.id');
+        table.string('comment').notNullable();
         table.timestamp('created_at').defaultTo(knex.fn.now());
     })
 };

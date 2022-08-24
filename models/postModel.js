@@ -7,9 +7,9 @@ class Posts {
         return result.rows
     }
 
-    static async displayPostFromDB() {
+    static async displayPostFromDB(post_id) {
         const sqlPost = `SELECT * FROM posts WHERE id = ($1)`
-        const db = await pool.query(sqlPost, [id])
+        const db = await pool.query(sqlPost, [post_id])
         return db.rows[0]
     }
 
