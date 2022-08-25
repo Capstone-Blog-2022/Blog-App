@@ -9,24 +9,8 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'capstone',
-      user:     'eagyemang',
-      password: '1'
-    }
-  },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'capstone',
-      user:     'eagyemang',
-      password: '1'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
+      user:     'postgres',
+      password: ""
     }
   },
 
@@ -34,8 +18,8 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'capstone',
-      user:     'eagyemang',
-      password: '1'
+      user:     'postgres',
+      password: ''
     },
     pool: {
       min: 2,
