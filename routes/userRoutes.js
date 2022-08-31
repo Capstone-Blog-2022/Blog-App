@@ -9,7 +9,7 @@ userRouter.get('/users/:id', getSingleUserInfo)
 
  userRouter.post('/users', createUser)
 
-// userRouter.put('/user/:id', update)
+userRouter.put('/user/:id', update)
 
  userRouter.delete('/users/:id', deleteUser)
 

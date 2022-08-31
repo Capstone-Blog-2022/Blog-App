@@ -8,9 +8,9 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'capstone',
-      user:     'postgres',
-      password: ""
+      database: 'postgresql',
+      user:     'capstone',
+      password: "capstone"
     }
   },
 

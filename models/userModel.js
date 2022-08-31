@@ -27,8 +27,8 @@ class User {
     }
 
     //will give a CRUD feature for the user information
-    static async updateInfo(id, email, first_name, last_name, age, about) {
-        await pool.query('UPDATE users SET email = $2, first_name = $3, last_name = $4, age = $5, birthday = $6, image = $7, bio = $8 WHERE id = $1', [id, email, first_name, last_name, age, birthday, image, bio])
+    static async updateInfo(id, username, password, email, about, first_name,last_name,) {
+        await pool.query('UPDATE users SET username = $2, password = $3, email = $4, about = $5, first_name = $6, last_name = $7, WHERE id = $1', [id, username, password, email, about, first_name,last_name,])
         const databaseResult = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
         return databaseResult.rows[0]
     }

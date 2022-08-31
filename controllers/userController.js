@@ -19,12 +19,15 @@ const getSingleUserInfo = async (req, res) => {
 }
 
 const update = async (req, res) => {
-    const id = req.params.id
+    const { username, password, email, about, first_name, last_name } = req.body
+    const userInfo = { username, password, email, about, first_name, last_name }
+    const userId = req.params.id
     try {
+        const newUserInfo = await User.updateInfo(userInfo)
+        return res.status(200).send({newUserInfo})
 
-
-    } catch {
-
+    } catch(err){
+        return res.status(400).send(err.message)
     }
 
 }
